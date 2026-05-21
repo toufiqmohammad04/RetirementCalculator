@@ -14,11 +14,23 @@ jobs:
 
         - name: 🏗️ Install Dependencies
           run: npm install
+        - name: ⚙️ Typecheck
+          run: npm run typecheck
 
-        - name: 🧪 Test
-          run: npm run test:local
+        - name: 🔍 Lint
+          run: npm run lint
 
-        - name: 📦 Upload Logs
+        - name: 🧪 Run tests and generate Allure
+          run: npm run test:local:allure
+
+        - name: 📁 Upload Allure report
+          uses: actions/upload-artifact@v4
+          if: always()
+          with:
+            name: allure-report
+            path: allure-report
+
+        - name: 📦 Upload Logs (on failure)
           uses: actions/upload-artifact@v4
           if: failure()
           with:

@@ -1,30 +1,57 @@
-Jasmine Boilerplate ![CI](https://github.com/webdriverio/jasmine-boilerplate/workflows/CI/badge.svg?event=push)
-===================
+Retirement Calculator E2E tests
+================================
 
-Boilerplate project to run WebdriverIO tests with Jasmine using latest ES2016 features and the page objects pattern.
+This repository contains an enterprise-style WebdriverIO + Jasmine test suite for the Securian Retirement Calculator.
 
-## Quick Start
+Quick start
+-----------
 
-Choose one of the following options:
+1. Install dependencies:
 
-1. Download the latest stable release [here](https://github.com/webdriverio/jasmine-boilerplate/archive/master.zip) or clone the git repo — `git clone https://github.com/webdriverio/jasmine-boilerplate.git`
+```bash
+npm install
+```
 
-2. Then copy the files to your project directory (all files in `/test` and the `wdio.*.conf.js`)
+2. Run typecheck and lint (recommended before running tests):
 
-3. Merge project dev dependencies with your projects dev dependencies in your `package.json`
+```bash
+npm run typecheck
+npm run lint
+```
 
+3. Run the retirement test locally (single spec):
 
-## Features
+```bash
+npm run test:local
+```
 
-- super simple setup
-- Page Object pattern used
-- ESNext ready
-- Integration with [Sauce Labs](https://saucelabs.com/)
-- Example using [GitHub Actions](https://github.com/features/actions)
+4. Run tests and generate Allure HTML report in one step:
 
-## Allure Reporting
+```bash
+npm run test:local:allure
+npm run allure:open
+```
 
-- Test results are written to `allure-results`
-- Generate the HTML report with `npm run allure:generate`
-- Run tests and create the report in one step with `npm run test:local:allure`
-- The generated report is written to `allure-report`
+Notes
+-----
+
+- Test spec: `test/specs/retirement.spec.ts` (uses Page Object Model and shared fixtures).
+- Page objects live in `test/pageobjects/` and test helpers in `test/helpers/`.
+- Test data fixtures are in `test/data/retirement.data.ts`.
+- Allure outputs: `allure-results/` (raw) and `allure-report/` (HTML). These are gitignored.
+
+Continuous Integration
+----------------------
+
+The repository includes a GitHub Actions workflow at `.github/workflows/ci.yaml` which runs tests on push and pull requests. The workflow runs typecheck, lint, the local test, generates the Allure report and uploads it as an artifact.
+
+Contributing
+------------
+
+See `CONTRIBUTING.md` for developer guidelines.
+
+Contact
+-------
+
+Repository: https://github.com/toufiqmohammad04/RetirementCalculator
+
