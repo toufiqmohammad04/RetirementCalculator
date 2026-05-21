@@ -21,3 +21,10 @@ Choose one of the following options:
 - ESNext ready
 - Integration with [Sauce Labs](https://saucelabs.com/)
 - Example using [GitHub Actions](https://github.com/features/actions)
+
+## Allure Reporting
+
+- Test results are written to `allure-results`
+- Generate the HTML report with `npm run allure:generate`
+- Run tests and create the report in one step with `npm run test:local:allure`
+- The generated report is written to `allure-report`

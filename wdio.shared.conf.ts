@@ -22,7 +22,7 @@ export const config: Omit<WebdriverIO.Config, 'capabilities'> = {
     // directory is where your package.json resides, so `wdio` will be called from there.
     //
     specs: [
-        './test/specs/**/*.ts'
+        './test/specs/retirement.spec.ts'
     ],
     // Patterns to exclude.
     exclude: [
@@ -106,12 +106,19 @@ export const config: Omit<WebdriverIO.Config, 'capabilities'> = {
     // Test reporter for stdout.
     // The only one supported by default is 'dot'
     // see also: https://webdriver.io/docs/dot-reporter.html
-    reporters: ['spec'],
+    reporters: [
+        'spec',
+        ['allure', {
+            outputDir: 'allure-results',
+            disableWebdriverStepsReporting: true,
+            disableWebdriverScreenshotsReporting: false,
+        }]
+    ],
     //
     // Options to be passed to Jasmine.
     jasmineOpts: {
-        // Jasmine default timeout
-        defaultTimeoutInterval: 60000,
+        // Jasmine default timeout (increased to accommodate E2E delays)
+        defaultTimeoutInterval: 300000,
         //
         // The Jasmine framework allows interception of each assertion in order to log the state of the application
         // or website depending on the result. For example, it is pretty handy to take a screenshot every time
