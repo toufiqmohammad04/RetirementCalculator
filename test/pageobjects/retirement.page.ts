@@ -1,6 +1,7 @@
 import Page from './page.js'
 
-const baseUrl = 'https://www.securian.com/insights-tools/retirement-calculator.html'
+// use a relative path so WDIO's `baseUrl` (in wdio.shared.conf.ts) can be used
+const basePath = '/insights-tools/retirement-calculator.html'
 
 interface RetirementFormData {
     currentAge: string
@@ -56,7 +57,7 @@ class RetirementPage extends Page {
     get resultMessage () { return $('#result-message') }
 
     open () {
-        return browser.url(baseUrl)
+        return browser.url(basePath)
     }
 
     async setField (element: any, value: string) {

@@ -60,3 +60,6 @@ typings/
 # WebdriverIO files
 errorShots
 .vscode
+allure-results/
+allure-report/
+test/assets/
